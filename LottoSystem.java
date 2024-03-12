@@ -68,5 +68,48 @@ public class LottoSystem {
 		
 		sc.close();
 		}
+
+		int[] userLotto = new int[6];
+		
+		System.out.println("사용자 로또 : ");
+		for(int i = 0; i <lottoBalls.length; i++) {
+			System.out.print(userLotto[i] + " ");
+		}
+		System.out.println();
+		
+		int matchCount = 0;
+		boolean isBonus = false;
+		//비교!!
+		for(int i = 0; i < userLotto.length; i++) {
+			for(int j = 0; j < lottoBalls.length; j++) {
+				
+				if(userLotto[i] == lottoBalls[i]) {
+					matchCount++;
+					break;
+				}
+			}
+			
+			//보너스번호 맞는것 찾기
+			if(!isBonus) {
+				if(userLotto[i] == bonusNumber) {
+					isBonus = true;
+				}
+			}
+		}
+		
+		//등수 출력
+		if(matchCount == 6) {
+			System.out.println("대박 !! 1등!!");
+		}else if(matchCount == 5 && isBonus) {
+			System.out.println("축하축하 !! 2등!!");
+		}else if(matchCount == 5) {
+			System.out.println("축하축하 !! 3등!!");
+		}else if(matchCount == 4) {
+			System.out.println("축하축하 !! 4등!!");
+		}else if(matchCount == 3) {
+			System.out.println("축하축하 !! 5등!!");
+		}else {
+			System.out.println("낙첨입니다...");
+		}
     }
 }
